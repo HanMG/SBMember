@@ -2,7 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 <div class="container">
-    <div>회원목록</div>
+    <div>회원조회</div>
+    <form action="/members" id="memberListForm" method="get">
+        <div class="form-group">
+            <label for="name">이름</label>
+            <input id="name" name="name" placeholder="이름을 입력하세요" type="text"></br>
+        </div>
+        <button type="submit" id="search">조회</button>
+    </form>
+    <button type="button" id="searchAll">전체조회</button>
     <div>
         <table style="text-align:center">
             <thead>
@@ -28,5 +36,33 @@
         </table>
     </div>
 </div> <!-- /container -->
+<script crossorigin="anonymous"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+    $(document).ready(function (){
+        $("#searchAll").onClick(function (event){
+            event.preventDefault();
+            searchAll();
+        }
+    );
+    function searchAll(){
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/member/all",
+            dataType: 'json',
+            cache: false,
+            timeout: 600000,
+            success: function (data){
+
+            }
+        });
+
+
+    }
+</script>
+
+
 </body>
 </html>

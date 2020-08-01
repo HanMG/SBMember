@@ -1,4 +1,4 @@
-package com.practice.basic.dto;
+package com.practice.basic.dto.form;
 
 import lombok.Data;
 
