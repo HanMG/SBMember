@@ -1,7 +1,9 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<body>
-<div class="container">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default_layout">
+
+<div class="container" layout:fragment="content">
     <div>회원조회</div>
     <form action="/members" id="memberListForm" method="get">
         <div class="form-group">
@@ -64,5 +66,5 @@
 </script>
 
 
-</body>
+
 </html>

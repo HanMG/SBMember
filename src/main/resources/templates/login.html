@@ -1,7 +1,9 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default_layout">
 <body>
-<div class="container">
+<div class="container" layout:fragment="content">
     <div>로그인</div>
     <form action="/members/login" method="post">
         <div class="form-group">
