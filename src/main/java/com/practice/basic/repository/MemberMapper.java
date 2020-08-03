@@ -9,9 +9,13 @@ public interface MemberMapper {
 
     void insertMember(MemberForm memberForm) throws Exception;
 
-    List<MemberDto> getMember(String name) throws Exception;
+    List<MemberDto> getMemberFromName(String name) throws Exception;
 
     List<MemberDto> getMemberList() throws Exception;
 
     int validateToEmail(MemberForm memberForm) throws Exception;
+
+    int updateMember(MemberDto memberDto) throws Exception;
+
+    MemberDto getMemberFromId(String id);
 }

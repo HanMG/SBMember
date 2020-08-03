@@ -18,8 +18,8 @@ public class MemberService {
         memberMapper.insertMember(memberForm);
     }
 
-    public List<MemberDto> getMember(String name) throws Exception{
-        return memberMapper.getMember(name);
+    public List<MemberDto> getMemberFromName(String name) throws Exception{
+        return memberMapper.getMemberFromName(name);
     }
 
     public List<MemberDto> getMemberList() throws Exception {
@@ -28,5 +28,13 @@ public class MemberService {
 
     public int validateToEmail(MemberForm memberForm) throws Exception{
         return memberMapper.validateToEmail(memberForm);
+    }
+
+    public int updateMember(MemberDto memberDto) throws Exception {
+        return memberMapper.updateMember(memberDto);
+    }
+
+    public MemberDto getMemberFromId(String id) throws Exception {
+        return memberMapper.getMemberFromId(id);
     }
 }

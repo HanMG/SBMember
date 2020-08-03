@@ -16,7 +16,15 @@
         WHERE email = #{email}
     </select>
 
-    <select id="getMember" resultType="com.practice.basic.dto.MemberDto">
+    <select id="getMemberFromId" resultType="com.practice.basic.dto.MemberDto">
+        SELECT
+        *
+        FROM member
+        WHERE id = #{id}
+
+    </select>
+
+    <select id="getMemberFromName" resultType="com.practice.basic.dto.MemberDto">
         SELECT
         *
         FROM member
@@ -28,6 +36,12 @@
         *
         FROM member
     </select>
+
+    <update id="updateMember" parameterType="com.practice.basic.dto.MemberDto">
+        UPDATE member
+        SET password = #{password}, name = #{name}
+        WHERE id = #{id}
+    </update>
 
 
 </mapper>

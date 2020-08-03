@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -45,6 +47,24 @@ public class MemberController {
         return "redirect:/";
     }
 
+    @GetMapping("/members/update")
+    public String getUpdateMember(Model model, HttpServletRequest request) throws Exception {
+        HttpSession session = request.getSession();
+        String id = (String) session.getAttribute("id");
+        MemberDto memberDto = memberService.getMemberFromId(id);
+        model.addAttribute("data", memberDto);
+        return "members/update";
+    }
+
+    @PostMapping("/members/update")
+    @ResponseBody
+    public int postUpdateMember(MemberDto memberDto) throws Exception {
+        int result;
+        result = memberService.updateMember(memberDto);
+        return result;
+    }
+
+
     @GetMapping("/members")
     public String list(){
         return "members/list";
@@ -54,7 +74,7 @@ public class MemberController {
     @GetMapping("/members/{name}")
     @ResponseBody
     public List<MemberDto> getOne(@PathVariable("name") String name) throws Exception {
-        List<MemberDto> members = memberService.getMember(name);
+        List<MemberDto> members = memberService.getMemberFromName(name);
         return members;
     }
 
